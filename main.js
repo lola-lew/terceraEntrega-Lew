@@ -82,6 +82,11 @@ function addClickeado (event) {
   const producto = btn.closest(".producto");
   const tituloProducto = producto.querySelector(".tituloProducto").textContent;
   const precio = producto.querySelector(".precio").textContent;
-  
+
+  agregarAlCarrito(tituloProducto, precio);
+}
+
+function agregarAlCarrito(tituloProducto, precio) {
+  const elementoCarrito = document.createElement("div");
 }
 
