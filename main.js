@@ -23,10 +23,19 @@ formUsuario.addEventListener("submit", (e) => {
   // reset form
   formUsuario.reset();
 
-  // saludar usuario
+  // comprobar usuario existente
+  let usuarioExiste = arrayUsuarios.find(nombre.value);
+
   const contenedorSaludo = document.getElementById("contenedorSaludo");
   const saludo = document.createElement("p");
-  saludo.innerText = `Hola ${usuario.value}`;
+  // saludar usuario
+  if (usuarioExiste === nombre.value) {
+    saludo.innerText = `¡Hola ${nombre.value}, bienvenido nuevamente!`;
+
+  } else {
+    saludo.innerText = `¡Bienvenido ${nombre.value}!`;
+  }
+
   contenedorSaludo.appendChild(saludo);
 })
 
