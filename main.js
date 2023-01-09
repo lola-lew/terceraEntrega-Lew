@@ -13,7 +13,7 @@ const formUsuario = document.getElementById("formUsuario");
 formUsuario.addEventListener("submit", (e) => {
   e.preventDefault();
   // crear usuario nuevo
-  const nombre = document.getElementById("nombre");
+  const nombre = document.getElementById("nombre").value;
   const usuario = new Usuario(nombre.value);
   arrayUsuarios.push(usuario);
 
@@ -30,10 +30,10 @@ formUsuario.addEventListener("submit", (e) => {
   const saludo = document.createElement("p");
   // saludar usuario
   if (usuarioExiste === nombre.value) {
-    saludo.innerText = `¡Hola ${nombre.value}, bienvenido nuevamente!`;
+    return saludo.innerText = `¡Hola ${nombre.value}, bienvenido nuevamente!`;
 
   } else {
-    saludo.innerText = `¡Bienvenido ${nombre.value}!`;
+    return saludo.innerText = `¡Bienvenido ${nombre.value}!`;
   }
 
   contenedorSaludo.appendChild(saludo);
