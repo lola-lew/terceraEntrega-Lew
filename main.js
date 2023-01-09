@@ -14,7 +14,7 @@ formUsuario.addEventListener("submit", (e) => {
   e.preventDefault();
   // crear usuario nuevo
   const nombre = document.getElementById("nombre").value;
-  const usuario = new Usuario(nombre.value);
+  const usuario = new Usuario(nombre);
   arrayUsuarios.push(usuario);
 
   // verifico x consola
@@ -24,16 +24,17 @@ formUsuario.addEventListener("submit", (e) => {
   formUsuario.reset();
 
   // comprobar usuario existente
-  let usuarioExiste = arrayUsuarios.find(nombre.value);
+  let usuarioExiste = arrayUsuarios.find(el => el.usuario === nombre);
 
   const contenedorSaludo = document.getElementById("contenedorSaludo");
   const saludo = document.createElement("p");
+
   // saludar usuario
-  if (usuarioExiste === nombre.value) {
-    return saludo.innerText = `¡Hola ${nombre.value}, bienvenido nuevamente!`;
+  if (usuarioExiste === nombre) {
+    saludo.innerText = `¡Hola ${nombre}, bienvenido nuevamente!`;
 
   } else {
-    return saludo.innerText = `¡Bienvenido ${nombre.value}!`;
+    saludo.innerText = `¡Bienvenido ${nombre}!`;
   }
 
   contenedorSaludo.appendChild(saludo);
@@ -69,4 +70,18 @@ const articulos = [kanpaiPandas, cryptoPunks, boredApe, wonderPals];
 
 // Array de productos vacía en la cual se iran almacenando los precios de los productos seleccionados
 const carrito = [];
+
+// Armando carrito
+const btnAdd = document.querySelectorAll(".btnAdd");
+btnAdd.forEach(agregarEnCarrito => {
+  agregarEnCarrito.addEventListener("click", addClickeado )
+})
+
+function addClickeado (event) {
+  const btn =  event.target;
+  const producto = btn.closest(".producto");
+  const tituloProducto = producto.querySelector(".tituloProducto").textContent;
+  const precio = producto.querySelector(".precio").textContent;
+  
+}
 
