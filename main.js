@@ -49,6 +49,7 @@ buscador.addEventListener("submit", (e) => {
   buscador.reset();
 })
 
+/*
 // Constructor de productos
 class Producto {
   constructor (nombre, precio, id) {
@@ -69,6 +70,7 @@ const articulos = [kanpaiPandas, cryptoPunks, boredApe, wonderPals];
 
 // Array de productos vacía en la cual se iran almacenando los precios de los productos seleccionados
 const carrito = [];
+*/
 
 // Armando carrito
 const btnAdd = document.querySelectorAll(".btnAdd");
@@ -90,6 +92,17 @@ function addClickeado (e) {
 function agregarAlCarrito(tituloProducto, precio) {
   const elementoCarrito = document.createElement("div");
   const contenidoCarrito = `
+  <div class="productoCarrito">
+      <h6>Producto</h6>
+      <p>${tituloProducto}</p>
+      <h6>Precio</h6>
+      <p>${precio}</p>
+      <h6>Cantidad</h6>
+      <input type="text">
+      <button>Quitar</button>
+    </div>
   `;
+  elementoCarrito.innerHTML = contenidoCarrito
+  contenedorCarrito.append(elementoCarrito)
 }
 
