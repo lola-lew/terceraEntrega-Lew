@@ -34,10 +34,10 @@ formUsuario.addEventListener("submit", (e) => {
   } else {
     // si el usuario no existe almacenar usuario en array y localStorage
     arrayUsuarios.push(usuario);
-    const ususarioJSON = JSON.stringify(usuario);
+    const usuarioJSON = JSON.stringify(usuario);
     console.log(ususarioJSON);
     // saludar usuario
-    localStorage.setItem("usuario", ususarioJSON);
+    localStorage.setItem("usuario", usuarioJSON);
     saludo.innerText = `¡Bienvenido ${nombre}!`;
   }
 
@@ -94,8 +94,10 @@ function addClickeado (e) {
   const precio = producto.querySelector(".precio").textContent;
 
   agregarAlCarrito(tituloProducto, precio);
-  const productoJSON = JSON.stringify(producto);
-  localStorage.setItem("producto", productoJSON);
+
+  // almacenar producto agregado al carrito en localStorage
+  const productoJSON = JSON.stringify(tituloProducto);
+  localStorage.setItem("tituloProducto", productoJSON);
   console.log(productoJSON)
 }
 
