@@ -32,7 +32,12 @@ formUsuario.addEventListener("submit", (e) => {
   if (usuarioExiste) {
     saludo.innerText = `¡Hola ${nombre}, bienvenido nuevamente!`;
   } else {
+    // si el usuario no existe almacenar usuario en array y localStorage
     arrayUsuarios.push(usuario);
+    const ususarioJSON = JSON.stringify(usuario);
+    console.log(ususarioJSON);
+    // saludar usuario
+    localStorage.setItem("usuario", ususarioJSON);
     saludo.innerText = `¡Bienvenido ${nombre}!`;
   }
 
@@ -72,14 +77,16 @@ const articulos = [kanpaiPandas, cryptoPunks, boredApe, wonderPals];
 const carrito = [];
 */
 
-// Armando carrito
+// Botón para agregar productos
 const btnAdd = document.querySelectorAll(".btnAdd");
 btnAdd.forEach(agregarEnCarrito => {
   agregarEnCarrito.addEventListener("click", addClickeado )
 })
 
+// div contenedor de carrito donde se iran cargando los productos
 const contenedorCarrito = document.querySelector(".carritoProductos");
 
+// Variables del producto
 function addClickeado (e) {
   const btn =  e.target;
   const producto = btn.closest(".producto");
@@ -87,8 +94,12 @@ function addClickeado (e) {
   const precio = producto.querySelector(".precio").textContent;
 
   agregarAlCarrito(tituloProducto, precio);
+  const productoJSON = JSON.stringify(producto);
+  localStorage.setItem("producto", productoJSON);
+  console.log(productoJSON)
 }
 
+// carrito armado
 function agregarAlCarrito(tituloProducto, precio) {
   const elementoCarrito = document.createElement("div");
   const contenidoCarrito = `
