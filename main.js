@@ -15,7 +15,6 @@ formUsuario.addEventListener("submit", (e) => {
   // crear usuario nuevo
   const nombre = document.getElementById("nombre").value;
   const usuario = new Usuario(nombre);
-  arrayUsuarios.push(usuario);
 
   // verifico x consola
   console.log(arrayUsuarios);
@@ -30,10 +29,10 @@ formUsuario.addEventListener("submit", (e) => {
   const saludo = document.createElement("p");
 
   // saludar usuario
-  if (usuarioExiste === nombre) {
+  if (usuarioExiste) {
     saludo.innerText = `¡Hola ${nombre}, bienvenido nuevamente!`;
-
   } else {
+    arrayUsuarios.push(usuario);
     saludo.innerText = `¡Bienvenido ${nombre}!`;
   }
 
@@ -77,8 +76,10 @@ btnAdd.forEach(agregarEnCarrito => {
   agregarEnCarrito.addEventListener("click", addClickeado )
 })
 
-function addClickeado (event) {
-  const btn =  event.target;
+const contenedorCarrito = document.querySelector(".carritoProductos");
+
+function addClickeado (e) {
+  const btn =  e.target;
   const producto = btn.closest(".producto");
   const tituloProducto = producto.querySelector(".tituloProducto").textContent;
   const precio = producto.querySelector(".precio").textContent;
@@ -88,5 +89,7 @@ function addClickeado (event) {
 
 function agregarAlCarrito(tituloProducto, precio) {
   const elementoCarrito = document.createElement("div");
+  const contenidoCarrito = `
+  `;
 }
 
